@@ -7,9 +7,9 @@ tmp_dir = "tmp"
 
 [build]
 # Just plain old shell command. You could use `make` as well.
-cmd = "go build -race -o ./tmp/disi cli/main.go"
+cmd = "go build -race -o ./tmp/template cli/main.go"
 # Binary file yields from `cmd`.
-bin = "tmp/disi"
+bin = "tmp/template"
 # Customize binary, can setup environment variables when run your app.
 full_bin = ""
 # Watch these filename extensions.

@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	appFilename = "disi" // filepath.Base(os.Args[0])
+	appFilename = "template" // filepath.Base(os.Args[0])
 	configFile  = ""
 
 	rootCmd = &cobra.Command{

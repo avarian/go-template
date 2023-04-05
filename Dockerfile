@@ -30,11 +30,11 @@ ENV DEFAULT_TZ ${TIMEZONE}
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 
-COPY --from=builder /build/disi_linux_amd64 /app/disi
-COPY disi.yml /app/
+COPY --from=builder /build/template_linux_amd64 /app/template
+COPY template.yml /app/
 
 WORKDIR /app
 EXPOSE 8080
 
-ENTRYPOINT [ "/app/disi" ]
+ENTRYPOINT [ "/app/template" ]
 CMD [ "serve" ]
