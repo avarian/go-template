@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+
+  air:
+    image: tokomodal/h2h-air
+    build:
+      context: .
+      dockerfile: Dockerfile.air
+    environment:
+      - "TZ=Asia/Jakarta"
+      - "air_wd=/app"
+    ports:
+      - "${BACKEND_LISTEN_PORT:-8080}:8080"
+    volumes:
+      - ".:/app"
+      - "go-pkg-data:/go/pkg"
+    entrypoint: >
+      /bin/sh -c '
+      /usr/local/bin/wait-for-it.sh redis:6379 -t 300;
+      /go/bin/air -- serve;
+      '
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:6-alpine
+    entrypoint: redis-server --appendonly yes
+    environment:
+      - TZ=Asia/Jakarta
+    volumes:
+      - "redis-data:/data"
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  redis-data:
+  go-pkg-data:
