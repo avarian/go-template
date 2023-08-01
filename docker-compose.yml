@@ -3,7 +3,7 @@ version: '3.8'
 services:
 
   air:
-    image: template
+    image: go-template
     build:
       context: .
       dockerfile: Dockerfile.air

@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	appFilename = "template" // filepath.Base(os.Args[0])
+	appFilename = "go-template" // filepath.Base(os.Args[0])
 	configFile  = ""
 
 	rootCmd = &cobra.Command{

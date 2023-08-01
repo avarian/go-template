@@ -10,7 +10,6 @@ WORKDIR /build
 RUN make linux
 
 FROM alpine:latest
-LABEL maintainer="frengky@tokomodal.co.id"
 
 ARG TIMEZONE=Asia/Jakarta
 
@@ -30,11 +29,11 @@ ENV DEFAULT_TZ ${TIMEZONE}
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 
-COPY --from=builder /build/template_linux_amd64 /app/template
-COPY template.yml /app/
+COPY --from=builder /build/go-template_linux_amd64 /app/go-template
+COPY go-template.yml /app/
 
 WORKDIR /app
 EXPOSE 8080
 
-ENTRYPOINT [ "/app/template" ]
+ENTRYPOINT [ "/app/go-template" ]
 CMD [ "serve" ]

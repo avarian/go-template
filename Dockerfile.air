@@ -5,9 +5,3 @@ RUN apt-get update && \
 
 RUN curl -sSo /usr/local/bin/wait-for-it.sh "https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh" && \
     chmod +x /usr/local/bin/wait-for-it.sh
-
-RUN wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.3/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz && \
-    tar vxf wkhtmltox-0.12.3_linux-generic-amd64.tar.xz && \
-    cp wkhtmltox/bin/wkhtmltopdf /usr/local/bin/ && \
-    rm -rf wkhtmltox && \
-    rm -f wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
