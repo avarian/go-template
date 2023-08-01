@@ -3,7 +3,7 @@ version: '3.8'
 services:
 
   air:
-    image: tokomodal/h2h-air
+    image: template
     build:
       context: .
       dockerfile: Dockerfile.air
