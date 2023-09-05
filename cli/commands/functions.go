@@ -19,10 +19,8 @@ import (
 	"gorm.io/gorm/logger"
 )
 
-//
 // Postgres
 // go get -u gorm.io/driver/postgres
-//
 func getPostgresDSN(profile string) string {
 	user := viper.GetString(profile + ".user")
 	password := viper.GetString(profile + ".password")
@@ -34,16 +32,14 @@ func getPostgresDSN(profile string) string {
 		host, user, password, database, port)
 }
 
-//
 // MySQL
 // go get -u gorm.io/driver/mysql
-//
 func getMysqlDSN(profile string) string {
 	user := viper.GetString(profile + ".user")
 	password := viper.GetString(profile + ".password")
 	host := viper.GetString(profile + ".host")
 	port := viper.GetString(profile + ".port")
-	name := viper.GetString(profile + ".name")
+	database := viper.GetString(profile + ".database")
 	socket := viper.GetString(profile + ".socket")
 
 	args := url.Values{}
@@ -59,7 +55,7 @@ func getMysqlDSN(profile string) string {
 	} else {
 		sb.WriteString(fmt.Sprintf("unix(%s)", socket))
 	}
-	sb.WriteString(fmt.Sprintf("/%s?%s", name, args.Encode()))
+	sb.WriteString(fmt.Sprintf("/%s?%s", database, args.Encode()))
 
 	return sb.String()
 }
